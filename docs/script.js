@@ -88,3 +88,49 @@ window.addEventListener('scroll', () => {
         header.classList.remove('scrolled');
     }
 }, { passive: true });
+
+// ============================================
+// ПАРАЛЛАКС ФОНА ДЛЯ БЛОКОВ
+// ============================================
+(function() {
+    // Находим блоки с параллакс-фоном
+    const parallaxBlocks = document.querySelectorAll('#about, #program');
+    
+    // Настройки параллакса
+    const PARALLAX_SPEED = 0.3; // Скорость движения фона (0.1 - медленно, 0.5 - быстрее)
+    
+    function updateParallax() {
+        const scrollY = window.pageYOffset;
+        const windowHeight = window.innerHeight;
+        
+        parallaxBlocks.forEach(block => {
+            const rect = block.getBoundingClientRect();
+            const blockTop = rect.top + scrollY; // Позиция блока в документе
+            const blockHeight = block.offsetHeight;
+            
+            // Проверяем, виден ли блок на экране
+            if (rect.bottom < 0 || rect.top > windowHeight) return;
+            
+            // Вычисляем смещение фона
+            // Фон движется медленнее контента
+            const offset = (scrollY - blockTop + windowHeight) * PARALLAX_SPEED;
+            
+            block.style.backgroundPosition = `center ${offset}px`;
+        });
+    }
+    
+    // Запускаем при скролле с throttle для производительности
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                updateParallax();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }, { passive: true });
+    
+    // Первый вызов
+    updateParallax();
+})();
