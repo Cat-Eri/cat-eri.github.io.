@@ -331,6 +331,33 @@ body {
 /* ============================================
    DIRECTIONS
    ============================================ */
+#about {
+    position: relative;
+    /* Добавляем фоновое изображение */
+    background-image: url('director-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Параллакс эффект (опционально) */
+}
+
+/* Добавляем затемняющий overlay */
+#about::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 15, 30, 0.85); /* Затемнение фона */
+    z-index: 1;
+}
+
+#about .container {
+    position: relative;
+    z-index: 2; /* Контент поверх фона и overlay */
+}
+
 .directions-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -339,15 +366,19 @@ body {
 
 .direction-card {
     padding: clamp(24px, 3.5vw, 40px) clamp(20px, 3vw, 32px);
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.08); /* Чуть светлее для контраста */
+    border: 1px solid rgba(255, 255, 255, 0.15); /* Чётче границы */
     border-radius: var(--radius-lg);
     cursor: pointer;
+    backdrop-filter: blur(10px); /* Эффект матового стекла */
+    transition: all 0.3s ease;
 }
 
 .direction-card:hover {
     border-color: var(--primary);
-    background: rgba(99, 102, 241, 0.06);
+    background: rgba(99, 102, 241, 0.15);
+    transform: translateY(-6px);
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
 }
 
 .direction-icon {
@@ -358,11 +389,13 @@ body {
 .direction-card h3 {
     font-size: clamp(18px, 2vw, 24px);
     margin-bottom: 10px;
+    color: var(--light);
 }
 
 .direction-card p {
-    color: var(--gray);
+    color: var(--gray-light); /* Светлее текст */
     font-size: clamp(14px, 1.4vw, 16px);
+    line-height: 1.6;
 }
 
 /* ============================================
@@ -501,21 +534,46 @@ body {
 .cta {
     text-align: center;
     padding: clamp(60px, 10vw, 120px) var(--container-padding);
-    background: var(--gradient);
+    /* Добавляем фоновое изображение */
+    background-image: url('ctg-bg.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     position: relative;
     overflow: hidden;
+}
+
+/* Добавляем затемнение для читаемости текста */
+.cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 15, 30, 0.75); /* Затемнение */
+    z-index: 1;
 }
 
 .cta h2 {
     font-size: clamp(28px, 5vw, 56px);
     margin-bottom: clamp(12px, 2vw, 20px);
     font-weight: 800;
+    position: relative;
+    z-index: 2; /* Текст поверх overlay */
 }
 
 .cta p {
     font-size: clamp(16px, 2vw, 20px);
     margin-bottom: clamp(24px, 4vw, 40px);
     opacity: 0.95;
+    position: relative;
+    z-index: 2;
+}
+
+.cta .btn {
+    position: relative;
+    z-index: 2;
 }
 
 /* ============================================
