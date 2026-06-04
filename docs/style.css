@@ -180,13 +180,12 @@ body {
     padding: clamp(100px, 15vh, 140px) 0 clamp(60px, 10vh, 80px);
     overflow: hidden;
     /* Добавляем фоновое изображение */
-    background-image: url('codefest-bg.jpg');
+    background-image: url('codefest-bg.jpeg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
-/* Убираем или комментируем круговой градиент */
 .hero::before {
     /* content: ''; */
     /* position: absolute; */
