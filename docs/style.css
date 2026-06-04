@@ -179,7 +179,7 @@ body {
     position: relative;
     padding: clamp(100px, 15vh, 140px) 0 clamp(60px, 10vh, 80px);
     overflow: hidden;
-    /* Фон */
+    /* Добавляем фоновое изображение */
     background-image: url('codefest-bg.jpeg');
     background-size: cover;
     background-position: center;
@@ -206,7 +206,7 @@ body {
     text-align: center;
     width: 100%;
     position: relative;
-    z-index: 2;
+    z-index: 2; /* Контент поверх фона */
 }
 
 /* Добавляем затемнение для лучшей читаемости текста */
@@ -217,7 +217,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(15, 15, 30, 0.7);
+    background: rgba(15, 15, 30, 0.7); /* Тёмное полупрозрачное затемнение */
     z-index: 1;
 }
 
@@ -333,39 +333,29 @@ body {
    ============================================ */
 #about {
     position: relative;
-    overflow: hidden; /* Обрезаем всё, что выходит за границы */
-    padding: var(--section-padding);
-    background: var(--dark); /* Цвет на всякий случай */
-}
-
-#about .parallax-bg {
-    position: absolute;
-    top: -20%;
-    left: 0;
-    width: 100%;
-    height: 140%; /* Изображение больше блока на 40% */
+    /* Добавляем фоновое изображение */
     background-image: url('director-bg.png');
     background-size: cover;
-    background-position: center center;
+    background-position: center;
     background-repeat: no-repeat;
-    z-index: 0;
-    will-change: transform; /* Оптимизация для GPU */
+    background-attachment: fixed; /* Параллакс эффект (опционально) */
 }
 
-#about::after {
+/* Добавляем затемняющий overlay */
+#about::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(15, 15, 30, 0.85);
+    background: rgba(15, 15, 30, 0.85); /* Затемнение фона */
     z-index: 1;
 }
 
 #about .container {
     position: relative;
-    z-index: 2;
+    z-index: 2; /* Контент поверх фона и overlay */
 }
 
 .directions-grid {
@@ -458,59 +448,6 @@ body {
 /* ============================================
    PROGRAM
    ============================================ */
-#program {
-    position: relative;
-    /* Добавляем фоновое изображение */
-    background-image: url('director-bg.png');
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    position: relative;
-    overflow: hidden;
-    padding: var(--section-padding);
-    background: var(--dark);
-}
-
-#program .parallax-bg {
-    position: absolute;
-    top: -20%;
-    left: 0;
-    width: 100%;
-    height: 140%;
-    background-image: url('codefest-bg.jpeg');
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    z-index: 0;
-    will-change: transform;
-}
-
-#program::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(15, 15, 30, 0.85);
-    z-index: 1;
-}
-
-#program .container {
-    position: relative;
-    z-index: 2;
-}
-#program::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(15, 15, 30, 0.85);
-    z-index: 1;
-}
-
 .program-list {
     max-width: 880px;
     margin: 0 auto;
@@ -521,15 +458,11 @@ body {
     grid-template-columns: minmax(80px, 120px) 1fr;
     gap: clamp(16px, 3vw, 32px);
     padding: clamp(18px, 3vw, 30px);
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.03);
     border-radius: var(--radius-md);
     margin-bottom: clamp(10px, 1.5vw, 16px);
     border-left: 4px solid var(--primary);
     align-items: start;
-}
-
-.program-item:hover {
-    background: rgba(99, 102, 241, 0.08);
 }
 
 .program-time {
@@ -547,7 +480,6 @@ body {
     color: var(--gray);
     font-size: clamp(13px, 1.4vw, 15px);
 }
-
 
 .faq-list {
     max-width: 880px;
@@ -602,7 +534,7 @@ body {
 .cta {
     text-align: center;
     padding: clamp(60px, 10vw, 120px) var(--container-padding);
-    /* Исправлено: правильное имя файла */
+    /* Добавляем фоновое изображение */
     background-image: url('ctg-bg.jpeg');
     background-size: cover;
     background-position: center;
@@ -611,6 +543,7 @@ body {
     overflow: hidden;
 }
 
+/* Добавляем затемнение для читаемости текста */
 .cta::before {
     content: '';
     position: absolute;
@@ -618,7 +551,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(15, 15, 30, 0.75);
+    background: rgba(15, 15, 30, 0.75); /* Затемнение */
     z-index: 1;
 }
 
@@ -697,21 +630,7 @@ body {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
 }
-@media (max-width: 768px) {
-    .program-item {
-        grid-template-columns: 1fr;
-        gap: 10px;
-    }
-}
 
-/* Отключаем параллакс на мобильных для производительности */
-@media (max-width: 768px) {
-    #about,
-    #program {
-        background-attachment: scroll;
-        background-position: center center !important;
-    }
-}
 @media (max-width: 768px) {
     .burger {
         display: flex;
@@ -750,13 +669,7 @@ body {
         gap: 10px;
     }
 }
-@media (max-width: 480px) {
-    #about,
-    #program {
-        background-attachment: scroll;
-        background-position: center center !important;
-    }
-}
+
 @media (max-width: 480px) {
     .hero-buttons {
         flex-direction: column;
