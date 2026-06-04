@@ -466,17 +466,17 @@ body {
 }
 
 #program .parallax-bg {
-    position: absolute;
-    top: -20%;
-    left: 0;
-    width: 100%;
-    height: 180%; /* Изображение больше блока на 80% */
-    background-image: url('director-bg.png');
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    z-index: 0;
-    will-change: transform; /* Оптимизация для GPU */
+    position: absolute !important;
+    top: -20% !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 180% !important; /* Изображение больше блока на 80% */
+    background-image: url('director-bg.png') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    z-index: 0 !important;
+    will-change: transform !important; /* Оптимизация для GPU */
 }
 
 #program::after {
