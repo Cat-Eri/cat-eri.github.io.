@@ -97,7 +97,7 @@ window.addEventListener('scroll', () => {
     const parallaxBlocks = document.querySelectorAll('#about, #program');
     
     // Настройки параллакса
-    const PARALLAX_SPEED = 0.3; // Скорость движения фона (0.1 - медленно, 0.5 - быстрее)
+    const PARALLAX_SPEED = 0.5; // Скорость движения фона (0.1 - медленно, 0.5 - быстрее)
     
     function updateParallax() {
         const scrollY = window.pageYOffset;
