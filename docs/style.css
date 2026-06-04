@@ -449,7 +449,7 @@ body {
 #program {
     position: relative;
     /* Добавляем фоновое изображение */
-    background-image: url('codefest-bg.jpeg');
+    background-image: url('director-bg.png');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
