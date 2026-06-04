@@ -336,7 +336,6 @@ body {
     overflow: hidden;
     padding: var(--section-padding);
     background: var(--dark);
-    z-index: 1;
 }
 
 #about .parallax-bg {
@@ -349,7 +348,7 @@ body {
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    z-index: -1; /* ВАЖНО: должен быть позади контента */
+    z-index: -1;
     will-change: transform;
 }
 
@@ -361,12 +360,12 @@ body {
     width: 100%;
     height: 100%;
     background: rgba(15, 15, 30, 0.85);
-    z-index: 0; /* Overlay поверх фона */
+    z-index: 0;
 }
 
 #about .container {
     position: relative;
-    z-index: 1; /* Контент поверх всего */
+    z-index: 1;
 }
 
 .directions-grid {
@@ -464,7 +463,6 @@ body {
     overflow: hidden;
     padding: var(--section-padding);
     background: var(--dark);
-    z-index: 1;
 }
 
 #program .parallax-bg {
@@ -473,11 +471,11 @@ body {
     left: 0;
     width: 100%;
     height: 140%;
-    background-image: url('codefest-bg.jpeg');
+    background-image: url('director-bg.png'); /* ← То же изображение */
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    z-index: -1; /* ВАЖНО */
+    z-index: -1;
     will-change: transform;
 }
 
