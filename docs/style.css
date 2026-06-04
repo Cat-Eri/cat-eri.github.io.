@@ -495,17 +495,6 @@ body {
     z-index: 1;
 }
 
-#program::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(15, 15, 30, 0.85);
-    z-index: 1;
-}
-
 .program-list {
     max-width: 880px;
     margin: 0 auto;
