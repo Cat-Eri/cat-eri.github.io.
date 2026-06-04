@@ -90,40 +90,36 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 // ============================================
-// ПАРАЛЛАКС ФОНА
+// ПАРАЛЛАКС ФОНА ДЛЯ БЛОКОВ
 // ============================================
 (function() {
+    // Находим блоки с параллакс-фоном
     const parallaxBlocks = document.querySelectorAll('#about, #program');
-    const PARALLAX_SPEED = 0.25; // 0.1 - медленно, 0.5 - быстро
+    
+    // Настройки параллакса
+    const PARALLAX_SPEED = 0.3; // Скорость движения фона (0.1 - медленно, 0.5 - быстрее)
     
     function updateParallax() {
         const scrollY = window.pageYOffset;
         const windowHeight = window.innerHeight;
         
         parallaxBlocks.forEach(block => {
-            const bg = block.querySelector('.parallax-bg');
-            if (!bg) return;
-            
             const rect = block.getBoundingClientRect();
-            const blockTop = rect.top + scrollY;
+            const blockTop = rect.top + scrollY; // Позиция блока в документе
             const blockHeight = block.offsetHeight;
             
-            // Пропускаем вычисления, если блок вне экрана
+            // Проверяем, виден ли блок на экране
             if (rect.bottom < 0 || rect.top > windowHeight) return;
             
-            // Вычисляем смещение
-            // Диапазон движения фона: от -20% до +20% высоты блока
-            const maxOffset = blockHeight * 0.20; // 20% — запас для покрытия краёв
-            const progress = (scrollY - blockTop + windowHeight) / (windowHeight + blockHeight);
-            const offset = (progress - 0.5) * maxOffset * 2 * PARALLAX_SPEED;
+            // Вычисляем смещение фона
+            // Фон движется медленнее контента
+            const offset = (scrollY - blockTop + windowHeight) * PARALLAX_SPEED;
             
-            // Ограничиваем смещение, чтобы не было белых краёв
-            const clampedOffset = Math.max(-maxOffset, Math.min(maxOffset, offset));
-            
-            bg.style.transform = `translate3d(0, ${clampedOffset}px, 0)`;
+            block.style.backgroundPosition = `center ${offset}px`;
         });
     }
     
+    // Запускаем при скролле с throttle для производительности
     let ticking = false;
     window.addEventListener('scroll', () => {
         if (!ticking) {
@@ -135,5 +131,6 @@ window.addEventListener('scroll', () => {
         }
     }, { passive: true });
     
+    // Первый вызов
     updateParallax();
 })();
