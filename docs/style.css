@@ -126,8 +126,7 @@ body {
     background-clip: text;
     text-decoration: none;
     flex-shrink: 0;
-    align-items: left !important;
-    margin: 0px 10px 0px 10px;
+    margin: 0px 10px 0px 10px !important;
 }
 
 .nav-links {
