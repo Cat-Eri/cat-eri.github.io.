@@ -131,7 +131,7 @@ body {
 .logo {
     font-size: clamp(20px, 3vw, 26px);
     font-weight: 800;
-    background: var(--gradient);
+    background: var(--light);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
