@@ -71,6 +71,7 @@ body {
     cursor: pointer;
     text-decoration: none;
     white-space: nowrap;
+    text-align: center;
 }
 
 .btn:hover {
@@ -135,7 +136,7 @@ body {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     text-decoration: none;
-    flex-shrink: 0;
+    /*flex-shrink: 0;*/
     margin: 0px 10px 0px 10px !important;
     word-wrap: break-word;
 }
@@ -191,6 +192,7 @@ body {
     position: relative;
     padding: clamp(100px, 15vh, 140px) 0 clamp(60px, 10vh, 80px);
     overflow: hidden;
+    color: var(--light);
     /* Фон */
     background-image: url('codefest-bg.jpeg');
     background-size: cover;
