@@ -131,7 +131,7 @@ body {
 .logo {
     font-size: clamp(20px, 3vw, 26px);
     font-weight: 800;
-    background: var(--light);
+    background: var(--gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -248,11 +248,11 @@ body {
 }
 
 .hero-title {
-    font-size: clamp(40px, 9vw, 110px);
+    font-size: clamp(40px, 9vw, 60px);
     font-weight: 900;
     line-height: 1.05;
     margin-bottom: clamp(16px, 3vw, 28px);
-    background: var(--gradient);
+    background: var(--light);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
